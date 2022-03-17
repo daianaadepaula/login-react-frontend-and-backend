@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import axios from 'axios';
 
@@ -18,16 +19,17 @@ import {
 
 function Users() {
   const [users, setUsers] = useState([]);
-  
+  const history = useHistory();
+
   useEffect(() => {
 
     async function fetchUsers() {
-      const {data: newUsers} = await axios.get("http://localhost:3001/users")
+      const { data: newUsers } = await axios.get("http://localhost:3001/users");
 
       setUsers(newUsers);
     }
 
-    fetchUsers()
+    fetchUsers();
   }, []);
 
   async function deleteUser(userId) {
@@ -38,11 +40,15 @@ function Users() {
     setUsers(newUsers);
   }
 
+  function goBackPage() {
+    history.push('/');
+  }
+
   return (
     <Container>
       <Image alt='logo-imagem' src={Avatar} />
       <ContainerItens>
-        <H1>Usuários</H1>         
+        <H1>Usuários</H1>
 
         <ul>
           {users.map(user => (
@@ -55,8 +61,8 @@ function Users() {
           ))}
         </ul>
 
-        <Button >
-        <img alt='seta' src={Arrow} /> Voltar
+        <Button onClick={goBackPage}>
+          <img alt='seta' src={Arrow} /> Voltar
         </Button>
 
       </ContainerItens>

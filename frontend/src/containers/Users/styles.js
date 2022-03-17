@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import Background from '../../assets/bgimageregister.svg'
 
 export const Container = styled.div`
@@ -10,7 +11,8 @@ export const Container = styled.div`
     align-items: center;
     gap: 40px;
 
-    height: 100vh;
+    height: 100%;
+    min-height: 100vh;
 `;
 
 export const Image = styled.img`
@@ -30,7 +32,8 @@ export const ContainerItens = styled.div`
     display: flex;
     flex-direction: column;
 
-    height: 100vh;
+    height: 100%;
+    min-height: calc(100vh - 70px);
 `;
 
 export const H1 = styled.h1`
